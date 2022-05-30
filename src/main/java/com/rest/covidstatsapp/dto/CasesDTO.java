@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CasesDTO{
 
+        private long id;
         private String country;
         private Integer totalCases;
 }

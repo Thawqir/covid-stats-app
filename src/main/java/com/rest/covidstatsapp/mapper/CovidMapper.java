@@ -15,6 +15,7 @@ public class CovidMapper {
 
     public CasesDTO casesMapper(Cases cases){
         return CasesDTO.builder()
+                .id(cases.getId())
                 .country(cases.getCountry())
                 .totalCases(cases.getTotalCases())
                 .build();
