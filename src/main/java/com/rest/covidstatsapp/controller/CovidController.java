@@ -3,8 +3,10 @@ package com.rest.covidstatsapp.controller;
 import com.rest.covidstatsapp.dto.CasesDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
+import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
 import com.rest.covidstatsapp.service.CovidService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +37,17 @@ public class CovidController {
     @PostMapping("/save")
     public Cases saveData(@RequestBody Cases cases){
         return covidService.saveData(cases);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteEmployee(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+        covidService.deleteEmployee(id);
+    }
+
+    @PatchMapping("/update/{id}/{totalCases}")
+    public void updateCaseNumber(@PathVariable(value = "id") long id,
+                                 @PathVariable (value = "totalCases")long total_cases) throws ResourceNotFoundException {
+        covidService.updateTotalCases(id, total_cases);
     }
 
 }
