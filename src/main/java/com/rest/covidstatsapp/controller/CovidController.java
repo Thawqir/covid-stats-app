@@ -6,6 +6,8 @@ import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
 import com.rest.covidstatsapp.service.CovidService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +27,11 @@ public class CovidController {
     }
 
     @GetMapping("/country/{country}")
-    public CasesDTO getDataByCountry(@PathVariable("country") String country){
-        return covidService.getCountryInfo(country);
+    public ResponseEntity<CasesDTO> getDataByCountry(@PathVariable("country") String country){
+        CasesDTO response =  covidService.getCountryInfo(country);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Description","Get country by name");
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
     }
 
     @GetMapping("/continent/{continent}")
