@@ -19,8 +19,6 @@ import java.util.List;
 public class CovidController {
 
     private final CovidService covidService;
-
-
     @GetMapping("/country")
     public List<Cases> getAllCountry(){
         return covidService.findAll();
