@@ -1,13 +1,16 @@
 package com.rest.covidstatsapp.mapper;
 
+import com.rest.covidstatsapp.dto.CasesCountry;
 import com.rest.covidstatsapp.dto.CasesDTO;
+import com.rest.covidstatsapp.dto.ContientListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -28,6 +31,23 @@ public class CovidMapper {
                 .totalCases(cases.getTotalCases())
                 .build();
     }
+
+    public ContientListDTO contientListDTOMapper(List<Cases> cases){
+
+        return ContientListDTO.builder()
+                .continent(cases.get(0).getContinent())
+                .casesAndCountries(cases.stream()
+                        .map(cases1 ->
+                                CasesCountry.builder()
+                                        .country(cases1.getCountry())
+                                        .totalCases(cases1.getTotalCases())
+                        .build())
+                        .collect(Collectors.toList())
+                )
+                .build();
+    }
+
+
 
     //Alternate method which can also be used to convert entity into DTO;
     public CasesDTO casesModelMapper(Cases cases){

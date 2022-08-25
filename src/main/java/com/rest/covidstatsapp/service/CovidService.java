@@ -1,6 +1,7 @@
 package com.rest.covidstatsapp.service;
 
 import com.rest.covidstatsapp.dto.CasesDTO;
+import com.rest.covidstatsapp.dto.ContientListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
@@ -8,7 +9,6 @@ import com.rest.covidstatsapp.mapper.CovidMapper;
 import com.rest.covidstatsapp.repository.CovidRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +35,11 @@ public class CovidService {
         return entity.stream()
                 .map(event -> mapper.continentMapper(event))
                 .collect(Collectors.toList());
+    }
+
+    public ContientListDTO getAllCountriesForContinent(String continent){
+
+        return mapper.contientListDTOMapper(casesRepository.getAllCountriesForContinent(continent));
 
     }
 
@@ -54,7 +59,7 @@ public class CovidService {
         }
 
         public void updateTotalCases(long id, long total_cases) throws ResourceNotFoundException{
-            Cases cases = casesRepository.findById(id)
+            casesRepository.findById(id)
                     .orElseThrow(() ->  new ResourceNotFoundException("id not found: " + id));
             casesRepository.updateTotalCasesForCountry(id,total_cases);
 
