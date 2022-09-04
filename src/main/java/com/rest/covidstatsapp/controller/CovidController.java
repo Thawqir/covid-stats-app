@@ -7,6 +7,7 @@ import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
 import com.rest.covidstatsapp.service.CovidService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,7 @@ public class CovidController {
         return covidService.getContinentInfo(continent);
     }
 
+    @Cacheable(value = "covidCache")
     @GetMapping("/continentCases/{continent}")
     public ContientListDTO getAllCountriesUnderContinent(@PathVariable("continent") String continent){
         return covidService.getAllCountriesForContinent(continent);
