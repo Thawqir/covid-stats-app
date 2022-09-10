@@ -13,8 +13,6 @@ import static org.junit.Assert.assertThat;
 @ExtendWith(MockitoExtension.class)
 public class CovidMapperTest {
 
-
-    //private CasesMapperTest mapper = new CasesMapperTest();
     @Mock
     private CovidMapper mapper;
 

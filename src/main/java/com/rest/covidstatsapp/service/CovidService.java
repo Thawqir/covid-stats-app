@@ -24,9 +24,8 @@ public class CovidService {
     }
 
     public CasesDTO getCountryInfo(String country){
-        Cases entity = casesRepository.findByCountry(country);
-        CasesDTO dto = mapper.casesMapper(entity);
-        return dto;
+
+        return mapper.casesMapper(casesRepository.findByCountry(country));
     }
 
     public List<ContinentDTO> getContinentInfo(String continent){
@@ -44,11 +43,6 @@ public class CovidService {
     }
 
     public Cases saveData(Cases cases){
-//        Cases newData = new Cases();
-//        newData.setId(cases.getId());
-//        newData.setCountry(cases.getCountry());
-//        newData.setContinent(cases.getContinent());
-//        newData.setTotalCases(cases.getTotalCases());
         return casesRepository.save(cases);
     }
 
