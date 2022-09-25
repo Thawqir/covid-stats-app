@@ -1,7 +1,7 @@
 package com.rest.covidstatsapp.service;
 
 import com.rest.covidstatsapp.dto.CasesDTO;
-import com.rest.covidstatsapp.dto.ContientListDTO;
+import com.rest.covidstatsapp.dto.ContinentListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
@@ -36,9 +36,9 @@ public class CovidService {
                 .collect(Collectors.toList());
     }
 
-    public ContientListDTO getAllCountriesForContinent(String continent){
+    public ContinentListDTO getAllCountriesForContinent(String continent){
 
-        return mapper.contientListDTOMapper(casesRepository.getAllCountriesForContinent(continent));
+        return mapper.continentListDTOMapper(casesRepository.getAllCountriesForContinent(continent));
 
     }
 

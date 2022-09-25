@@ -1,7 +1,7 @@
 package com.rest.covidstatsapp.service;
 
 import com.rest.covidstatsapp.dto.CasesDTO;
-import com.rest.covidstatsapp.dto.ContientListDTO;
+import com.rest.covidstatsapp.dto.ContinentListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
@@ -30,7 +30,7 @@ public class CovidServiceTest {
 
     private Cases cases;
     private static final List<Cases> CASES_LIST = Collections.singletonList(Cases.builder().build());
-    private static final ContientListDTO CONTINENT_LIST = (ContientListDTO.builder().build());
+    private static final ContinentListDTO CONTINENT_LIST = (ContinentListDTO.builder().build());
     private static final ContinentDTO CONTINENTDTO_LIST = (ContinentDTO.builder().build());
 
     @Mock
@@ -116,12 +116,12 @@ public class CovidServiceTest {
 
     @Test
     void getAllCountriesFromContinent(){
-        when(covidMapper.contientListDTOMapper(CASES_LIST)).thenReturn(CONTINENT_LIST);
+        when(covidMapper.continentListDTOMapper(CASES_LIST)).thenReturn(CONTINENT_LIST);
         when(covidRepository.getAllCountriesForContinent(any())).thenReturn(CASES_LIST);
 
         covidService.getAllCountriesForContinent(any());
 
-        verify(covidMapper).contientListDTOMapper(anyList());
+        verify(covidMapper).continentListDTOMapper(anyList());
         verify(covidRepository).getAllCountriesForContinent(any());
     }
 

@@ -2,7 +2,7 @@ package com.rest.covidstatsapp.mapper;
 
 import com.rest.covidstatsapp.dto.CasesCountry;
 import com.rest.covidstatsapp.dto.CasesDTO;
-import com.rest.covidstatsapp.dto.ContientListDTO;
+import com.rest.covidstatsapp.dto.ContinentListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import lombok.RequiredArgsConstructor;
@@ -32,9 +32,9 @@ public class CovidMapper {
                 .build();
     }
 
-    public ContientListDTO contientListDTOMapper(List<Cases> cases){
+    public ContinentListDTO continentListDTOMapper(List<Cases> cases){
 
-        return ContientListDTO.builder()
+        return ContinentListDTO.builder()
                 .continent(cases.get(0).getContinent())
                 .casesAndCountries(cases.stream()
                         .map(cases1 ->

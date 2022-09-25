@@ -1,7 +1,7 @@
 package com.rest.covidstatsapp.mapper;
 
 import com.rest.covidstatsapp.dto.CasesDTO;
-import com.rest.covidstatsapp.dto.ContientListDTO;
+import com.rest.covidstatsapp.dto.ContinentListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import org.junit.jupiter.api.Test;
@@ -61,7 +61,7 @@ public class CovidMapperTest {
                 .totalCases(1000)
                 .build());
 
-        ContientListDTO contientDTO = mapper.contientListDTOMapper(cases);
+        ContinentListDTO contientDTO = mapper.continentListDTOMapper(cases);
 
         assertTrue(cases.get(0).getContinent().equals(contientDTO.getContinent()));
         assertTrue(cases.get(0).getCountry().equals(contientDTO.getCasesAndCountries().get(0).getCountry()));

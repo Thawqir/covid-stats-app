@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContientListDTO implements Serializable {
+public class ContinentListDTO implements Serializable {
 
     private static final long serialVersionUID = 7156526077883281623L;
 

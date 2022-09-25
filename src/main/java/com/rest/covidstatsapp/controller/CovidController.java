@@ -1,7 +1,7 @@
 package com.rest.covidstatsapp.controller;
 
 import com.rest.covidstatsapp.dto.CasesDTO;
-import com.rest.covidstatsapp.dto.ContientListDTO;
+import com.rest.covidstatsapp.dto.ContinentListDTO;
 import com.rest.covidstatsapp.dto.ContinentDTO;
 import com.rest.covidstatsapp.entity.Cases;
 import com.rest.covidstatsapp.exceptions.ResourceNotFoundException;
@@ -41,7 +41,7 @@ public class CovidController {
 
     @Cacheable(value = "covidCache")
     @GetMapping("/continentCases/{continent}")
-    public ContientListDTO getAllCountriesUnderContinent(@PathVariable("continent") String continent){
+    public ContinentListDTO getAllCountriesUnderContinent(@PathVariable("continent") String continent){
         return covidService.getAllCountriesForContinent(continent);
     }
 
