@@ -47,8 +47,6 @@ public class CovidMapper {
                 .build();
     }
 
-
-
     //Alternate method which can also be used to convert entity into DTO;
     public CasesDTO casesModelMapper(Cases cases){
         ModelMapper mapper = new ModelMapper();
