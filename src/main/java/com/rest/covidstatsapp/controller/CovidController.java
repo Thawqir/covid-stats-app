@@ -52,7 +52,7 @@ public class CovidController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteEmployee(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
-        covidService.deleteEmployee(id);
+        covidService.deleteById(id);
     }
 
     @PatchMapping("/update/{id}/{totalCases}")

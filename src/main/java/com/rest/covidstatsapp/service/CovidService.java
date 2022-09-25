@@ -46,7 +46,7 @@ public class CovidService {
         return casesRepository.save(cases);
     }
 
-    public void deleteEmployee(long id) throws ResourceNotFoundException {
+    public void deleteById(long id) throws ResourceNotFoundException {
         Cases cases = casesRepository.findById(id)
                 .orElseThrow(() ->  new ResourceNotFoundException("id not found: " + id));
             casesRepository.delete(cases);
